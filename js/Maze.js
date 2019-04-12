@@ -23,17 +23,7 @@ const maze2 = [
     '#......P#',
     '#########',
 ];
-const easterEgg = [
-    '#########',
-    '#.......#',
-    '#.#####.#',
-    '#...#T..#',
-    '###.#####',
-    '#...#...#',
-    '#.###.#.#',
-    '#.....#P#',
-    '#########',
-]
+
 const mazeBoard = document.createElement('div');
 
 document.body.appendChild(mazeBoard);
@@ -82,7 +72,7 @@ function nextMaze() {
             } else if (cellItem === 'P') {
                 cell.classList.add('player');
             } else if (cellItem === 'E') {
-                cell.classList.add('easterEgg')
+                cell.classList.add('easterEgg');
             }
             row.appendChild(cell)
         });
@@ -90,6 +80,7 @@ function nextMaze() {
         mazeBoard.appendChild(row);
     });
 }
+
 
 function getIndex(target) {
     return Array.from(target.parentElement.children).indexOf(target);
@@ -143,7 +134,11 @@ window.addEventListener('keydown', function(event) {
 });
 function treasureFound(targetNode) {
     if (targetNode === null || targetNode.classList.contains('treasure')) {
-        alert('YES! You made it!');
+        swal('YES! You made it!');
         nextMaze();
-    }
-}
+    } else if (targetNode === null || targetNode.classList.contains('easterEgg')){
+swal("Thanks for playing my game! Basically im looking for my first job on position of Junior Front-end Developer! My LinkedIn: www.linkedin.com/in/vladyslav-ganushkevych")
+    };
+    
+   
+};
