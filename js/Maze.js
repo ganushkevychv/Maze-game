@@ -141,3 +141,9 @@ window.addEventListener('keydown', function(event) {
 
     };
 });
+function treasureFound(targetNode) {
+    if (targetNode === null || targetNode.classList.contains('treasure')) {
+        alert('YES! You made it!');
+        nextMaze();
+    }
+}
