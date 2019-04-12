@@ -94,3 +94,50 @@ function nextMaze() {
 function getIndex(target) {
     return Array.from(target.parentElement.children).indexOf(target);
 };
+function getIndex(target) {
+    return Array.from(target.parentElement.children).indexOf(target);
+};
+
+
+window.addEventListener('keydown', function(event) {
+    const playerNode = document.querySelector('.player');
+    if (event.code === 'KeyD') {
+        const targetNode = playerNode.nextElementSibling;
+        if (targetNode === null || targetNode.classList.contains('wall')) {
+            return;
+        };
+        targetNode.classList.add('player');
+        playerNode.classList.remove('player');
+        treasureFound(targetNode)
+    };
+    if (event.code === 'KeyA') {
+        const targetNode = playerNode.previousElementSibling;
+        if (targetNode === null || targetNode.classList.contains('wall')) {
+            return;
+        };
+        targetNode.classList.add('player');
+        playerNode.classList.remove('player');
+        treasureFound(targetNode)
+    };
+    if (event.code === 'KeyW') {
+        const row = playerNode.parentElement.previousElementSibling;
+        const index = getIndex(playerNode);
+        if (row === null || row.children[index].classList.contains('wall')) {
+            return;
+        };
+        row.children[index].classList.add('player');
+        playerNode.classList.remove('player');
+        treasureFound(row.children[index])
+    };
+    if (event.code === 'KeyS') {
+        const row = playerNode.parentElement.nextElementSibling;
+        const index = getIndex(playerNode);
+        if (row === null || row.children[index].classList.contains('wall')) {
+            return;
+        }
+        row.children[index].classList.add('player');
+        playerNode.classList.remove('player');
+        treasureFound(row.children[index])
+
+    };
+});
